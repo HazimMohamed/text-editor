@@ -29,6 +29,29 @@
     myMenus.hideAll();
   });
 
+  /* drag and drop support */
+  
+  textArea.addEventListener('dragenter', (e) => {
+    e.preventDefault();
+  });
+
+  textArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    document.getElementById('textEditor').style.backgroundColor = "#d3dded";
+  });
+
+  textArea.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    document.getElementById('textEditor').style.backgroundColor = "white";
+  });
+
+  textArea.addEventListener('drop', async (e) => {
+    e.preventDefault();
+    document.getElementById('textEditor').style.backgroundColor = "white";
+    let data_item = e.dataTransfer.items[0];
+    app.openFile(await data_item.getAsFileSystemHandle());
+  });
+
   /* Listen for tab key */
   textArea.addEventListener('keydown', (e) => {
     if (e.key === 'Tab' && app.options.captureTabs) {

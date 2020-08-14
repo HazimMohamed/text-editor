@@ -34,7 +34,7 @@ const app = {
     wordWrap: true,
   },
   hasNativeFS: 'chooseFileSystemEntries' in window ||
-               'showOpenFilePicker' in window,
+  'showOpenFilePicker' in window,
   isMac: navigator.userAgent.includes('Mac OS X'),
 };
 
